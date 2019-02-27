@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>图片裁剪工具</title>
+    <!-- 设置 viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <!-- IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 兼容国产浏览器的高速模式 -->
+    <meta name="renderer" content="webkit">
+    <!-- 引入 Bootstrap 的 CSS 文件 -->
+    <link rel="stylesheet" href="css/layer.css"/>
+</head>
+<body>
+
+
+  <div onclick="cutImg('null', 1,'')" style="width:100px;height:35px;text-align:center;line-height:35px;color:#fff;background:#4078cb;">添加图片</div>
+
+
+
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/layer.js"></script>
+<script>
+    // 我们自己的 JS 代码
+function cutImg(s, t,arr){
+  var selector = encodeURIComponent(s);
+  var a = encodeURIComponent(arr);
+  layer.open({
+    title: '裁剪图片',
+    type: 2,
+    area: ['90%', '600px'],
+    fixed: false, //不固定
+    maxmin: true,
+    content: 'cutImg.html?s='+ selector + '&t='+t + '&arr='+a
+  });
+  $(".layui-layer-content").find("iframe").css("transform", "scale(1)");
+  $(".layui-layer").css("width", "80%");
+  $(".layui-layer").css("height", "60%");
+  $(".layui-layer").css("left", "10%");
+  $(".layui-layer").css("top", "5%");
+}
+
+</script>
+</body>
+</html>
